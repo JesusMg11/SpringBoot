@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.centrado{
+    text-align: center;
+}
+
+body{
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.cursor{
+    cursor: pointer;
+}
