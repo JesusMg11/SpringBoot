@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { CookieService } from "ngx-cookie-service";
 
 //URL para peticiones a Spring
-const URL:string = "http://localhost:8080";
+const URL:string = "http://localhost:8080/api/";
 
 @Injectable({
   providedIn: 'root'
@@ -30,13 +30,13 @@ export class DatosService {
   }
 
   obtenerEquipos(){
-    return this.http.get(URL + "/equipo/");
+    return this.http.get(URL + "equipo/buscar");
   }
 
   obtenerJugadoresEquipo(id){
    // let Params = new HttpParams();
    // Params = Params.append('id', id);
-    return this.http.get(URL + "/jugadores/" + id);
+    return this.http.get(URL + "equipo/buscarJugadores/" + id);
   }
 
   guardarJugador(jugador, equipo){
@@ -46,18 +46,18 @@ export class DatosService {
     formData.append('dorsal', jugador.dorsal);
     formData.append('equipo', equipo);
 
-    return this.http.post(URL + '/jugador/', formData);
+    return this.http.post(URL + 'jugador/agregar', formData);
   }
 
   guardarEquipo(equipo){
     let formData = new FormData();
     formData.append('nombre', equipo.nombre);
 
-    return this.http.post(URL + '/equipo/', formData);
+    return this.http.post(URL + 'equipo/agregar', formData);
   }
 
   eliminarJugador(id){
-    return this.http.delete(URL + '/jugador/eliminar/' + id);
+    return this.http.delete(URL + 'jugador/eliminar/' + id);
   }
 
   actualizarJugador(jugador, equipo){
@@ -68,6 +68,6 @@ export class DatosService {
     Params = Params.append('dorsal', jugador.dorsal);
     Params = Params.append('equipo', equipo);
 
-    return this.http.put(URL + '/jugador/', Params);
+    return this.http.put(URL + 'jugador/actualizar', Params);
   }
 }
