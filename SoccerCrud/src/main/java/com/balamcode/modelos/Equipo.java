@@ -6,36 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table (name = "equipo")
+@Data
 public class Equipo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nombre;
-	
-	public Equipo() {
 		
-	}
-	
-	public Equipo(String nombre) {
-		super();
-		this.nombre = nombre;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	
 }
